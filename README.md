@@ -4,7 +4,7 @@
 - Currently only implements auth_userokay(3) since this is most suitable for authenticating to OpenBSD from python
 
 ### Note
-- Your application must have root privileges in order to user this application.
+- Your application must have root privileges in order to use this module.
 
 Usage:
 ```sh

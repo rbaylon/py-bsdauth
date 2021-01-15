@@ -8,7 +8,9 @@ def _get_username():
 class UserOkay(object):
     """
         Initialize this object with username and password strings.
-        If username and password are None then return None.
+        If username and password are None then return None. For security
+        reason make to delete the password variable after you instanciate
+        this object.
     """
     def __init__(self, username=None, password=None):
         if not username or not password:

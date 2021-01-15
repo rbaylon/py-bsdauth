@@ -20,23 +20,48 @@ import pwd
 def _get_username():
     return pwd.getpwuid( os.getuid() )[ 0 ]
 
+import re
+
+class Validator(object):
+    def is_username_valid(self, username):
+        """
+           Validate username based on OpenBSD's passwd(5) username specs.
+        """
+        if re.search('^[a-z]+[0-9|\-|_|a-z]+$', username) and len(username) <= 31:
+            return True
+        else:
+            return False
+
+    def is_password_valid(self, password):
+        """
+           Validate password based on OpenBSD's passwd(1) password specs.
+        """
+        if len(password) >= 6 and len(password) <= 128:
+            return True
+        else:
+            return False
+
 class UserOkay(object):
     """
         Initialize this object with username and password strings.
         If username and password are None then return None. For security
-        reason make to delete the password variable after you instanciate
-        this object.
+        reason make sure to delete the password variable after you psss it 
+        to this class.
     """
     def __init__(self, username=None, password=None):
+        v = Validator()
         if not username or not password:
-            return None
+            raise ValueError('Empty username or password not allowed.')
 
-        user = c_char_p()
-        passwd = c_char_p()
-        user.value = str.encode(username)
-        passwd.value = str.encode(password)
-        self.username = user
-        self.password = passwd
+        if v.is_username_valid(username) and v.is_password_valid(password):
+            user = c_char_p()
+            passwd = c_char_p()
+            user.value = str.encode(username)
+            passwd.value = str.encode(password)
+            self.username = user
+            self.password = passwd
+        else:
+            raise ValueError('Invalid username or password')
 
     def login(self):
         """

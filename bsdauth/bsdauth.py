@@ -14,13 +14,11 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 """
 from ctypes import CDLL, c_char_p
-import os
-import pwd
+import os, pwd, re
 
 def _get_username():
     return pwd.getpwuid( os.getuid() )[ 0 ]
 
-import re
 
 class Validator(object):
     def is_username_valid(self, username):
@@ -40,6 +38,7 @@ class Validator(object):
             return True
         else:
             return False
+
 
 class UserOkay(object):
     """

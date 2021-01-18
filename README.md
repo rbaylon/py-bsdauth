@@ -1,6 +1,6 @@
 # py-bsdauth
 
-- Python interface to OpenBSD's BSD Auth api in libc
+- Python interface to OpenBSD's BSD Auth
 - Currently only implements auth_userokay(3) since this is most suitable for authenticating to OpenBSD from python
 
 ### Note

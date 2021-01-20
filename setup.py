@@ -11,7 +11,7 @@ README = (HERE / "README.md").read_text()
 setup(
     name="py-bsdauth",
     version="1.1.0",
-    description="Python interface to OpenBSD's BSD Auth api in libc.",
+    description="Python interface to OpenBSD's BSD Auth.",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/rbaylon/py-bsdauth",

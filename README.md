@@ -4,7 +4,18 @@
 - Currently only implements auth_userokay(3) since this is most suitable for authenticating to OpenBSD from python
 
 ### Note
-- Your application must privileges to use the particular login style. This means it must either be running as root, be running a privileged helped as root, or be in the 'auth' group.
+- Your application must be in the 'auth' group to call auth_userokay(3):
+
+```sh
+usermod -G auth <yourdaemonuser>
+```
+
+For some login styles, you may also need to be in additional groups:
+
+```sh
+usermod -G _token <yourdaemonuser>  # for style in ['activ', 'crypto', 'snk', 'token']
+usermod -G _radius <yourdaemonuser>  # for style == 'radius'
+```
  
 Usage:
 ```sh

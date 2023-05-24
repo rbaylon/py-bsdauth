@@ -9,13 +9,6 @@
 ```sh
 usermod -G auth <yourdaemonuser>
 ```
-
-For some login styles, you may also need to be in additional groups:
-
-```sh
-usermod -G _token <yourdaemonuser>  # for style in ['activ', 'crypto', 'snk', 'token']
-usermod -G _radius <yourdaemonuser>  # for style == 'radius'
-```
  
 Usage:
 ```sh

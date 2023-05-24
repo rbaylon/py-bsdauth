@@ -19,7 +19,7 @@ Usage:
 >>> uo.login()
 True
 >>> pw='badpassword'
->>> uo = UserOkay(ur,pw)
+>>> uo = UserOkay(u,pw)
 >>> uo.login()
 False
 >>> ur='baduser'

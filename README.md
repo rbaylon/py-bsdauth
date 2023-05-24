@@ -1,7 +1,7 @@
 # py-bsdauth
 
 - Python interface to OpenBSD's BSD Auth
-- Currently only implements auth_userokay(3) since this is most suitable for authenticating to OpenBSD from python
+- Currently only implements auth_userokay(3) passwd authentication style.
 
 ### Note
 - Your application must be in the 'auth' group to call auth_userokay(3):

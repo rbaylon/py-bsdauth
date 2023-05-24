@@ -16,9 +16,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 from ctypes import CDLL, c_char_p
 import os, pwd, re
 
-def _get_username():
-    return pwd.getpwuid( os.getuid() )[ 0 ]
-
 
 class Validator(object):
     def is_username_valid(self, username):
@@ -70,9 +67,6 @@ class UserOkay(object):
             again. If calling process is not owned by root return None. root privilege 
             is required by BSD Auth.
         """
-        if _get_username() != 'root':
-            return None
-
         sofile = '/usr/lib/libc.so*'
         authstyle = c_char_p()
         authstyle.value = str.encode('passwd')

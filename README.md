@@ -4,8 +4,12 @@
 - Currently only implements auth_userokay(3) since this is most suitable for authenticating to OpenBSD from python
 
 ### Note
-- Your application must have root privileges in order to use this module.
+- Your application must be in the 'auth' group to call auth_userokay(3):
 
+```sh
+usermod -G auth <yourdaemonuser>
+```
+ 
 Usage:
 ```sh
 >>> from bsdauth.bsdauth import UserOkay
